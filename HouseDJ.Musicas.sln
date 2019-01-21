@@ -5,6 +5,16 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Musicas.Web", "HouseDJ.Musicas.Web\HouseDJ.Musicas.Web.csproj", "{D5954D17-14F9-44E2-BF43-5F76EFF16163}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{96DCFEF3-3E7D-47A9-B8B9-0478A29FB3EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Musicas.Dominio", "HouseDJ.Musicas.Dominio\HouseDJ.Musicas.Dominio.csproj", "{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Acesso a Dados", "Acesso a Dados", "{91E3A280-6B86-4B9A-88B5-B72750FA6F52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Musicas.AcessoDados.Entity", "HouseDJ.Musicas.AcessoDados.Entity\HouseDJ.Musicas.AcessoDados.Entity.csproj", "{51BCC11D-EA27-40A4-84A9-CCF351B704AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Comum.Entity", "HouseDJ.Comum.Entity\HouseDJ.Comum.Entity.csproj", "{0D221A2A-61ED-47D7-B734-3A80C500425A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +25,26 @@ Global
 		{D5954D17-14F9-44E2-BF43-5F76EFF16163}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5954D17-14F9-44E2-BF43-5F76EFF16163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5954D17-14F9-44E2-BF43-5F76EFF16163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51BCC11D-EA27-40A4-84A9-CCF351B704AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51BCC11D-EA27-40A4-84A9-CCF351B704AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51BCC11D-EA27-40A4-84A9-CCF351B704AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51BCC11D-EA27-40A4-84A9-CCF351B704AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5} = {96DCFEF3-3E7D-47A9-B8B9-0478A29FB3EA}
+		{51BCC11D-EA27-40A4-84A9-CCF351B704AA} = {91E3A280-6B86-4B9A-88B5-B72750FA6F52}
+		{0D221A2A-61ED-47D7-B734-3A80C500425A} = {91E3A280-6B86-4B9A-88B5-B72750FA6F52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0775E1E4-A62E-4F08-8A25-40A4F7F1D124}
