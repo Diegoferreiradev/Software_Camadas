@@ -7,7 +7,7 @@ namespace HouseDJ.Comum.Entity
     {
         public HouseDJEntityAbstractConfig()
         {
-            ConfigurarNomeTable();
+            ConfigurarNomeTabela();
             ConfigurarCamposTabela();
             ConfigurarChavePrimaria();
             ConfigurarChaveEstrangeira();
@@ -19,7 +19,7 @@ namespace HouseDJ.Comum.Entity
 
         protected abstract void ConfigurarCamposTabela();
 
-        protected abstract void ConfigurarNomeTable();
+        protected abstract void ConfigurarNomeTabela();
  
     }
 }

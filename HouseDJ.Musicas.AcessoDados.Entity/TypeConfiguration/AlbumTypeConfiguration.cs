@@ -25,6 +25,11 @@ namespace HouseDJ.Musicas.AcessoDados.Entity.TypeConfiguration
                 .IsOptional()
                 .HasColumnName("ALB_OBSERVACOES")
                 .HasMaxLength(1000);
+
+            Property(p => p.Email)
+                .IsRequired()
+                .HasColumnName("ALB_EMAIL")
+                .HasMaxLength(50);
         }
 
         protected override void ConfigurarChaveEstrangeira()
@@ -37,7 +42,7 @@ namespace HouseDJ.Musicas.AcessoDados.Entity.TypeConfiguration
             
         }
 
-        protected override void ConfigurarNomeTable()
+        protected override void ConfigurarNomeTabela()
         {
             ToTable("ALB_ALBUNS");
         }
