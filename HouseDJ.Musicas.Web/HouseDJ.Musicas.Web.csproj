@@ -45,6 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -123,14 +132,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoMapper\DominioParaViewModelProfile.cs" />
+    <Compile Include="Controllers\AlbunsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewMoldes\Album\AlbumIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -168,6 +181,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Albuns\Create.cshtml" />
+    <Content Include="Views\Albuns\Delete.cshtml" />
+    <Content Include="Views\Albuns\Details.cshtml" />
+    <Content Include="Views\Albuns\Edit.cshtml" />
+    <Content Include="Views\Albuns\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -185,6 +203,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HouseDJ.Comum.Entity\HouseDJ.Comum.Entity.csproj">
+      <Project>{0d221a2a-61ed-47d7-b734-3a80c500425a}</Project>
+      <Name>HouseDJ.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseDJ.Musicas.AcessoDados.Entity\HouseDJ.Musicas.AcessoDados.Entity.csproj">
+      <Project>{51bcc11d-ea27-40a4-84a9-ccf351b704aa}</Project>
+      <Name>HouseDJ.Musicas.AcessoDados.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseDJ.Musicas.Dominio\HouseDJ.Musicas.Dominio.csproj">
+      <Project>{589f3ea5-7011-4fd6-af2c-274e1bbfb1f5}</Project>
+      <Name>HouseDJ.Musicas.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
