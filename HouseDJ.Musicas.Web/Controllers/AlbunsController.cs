@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using HouseDJ.Musicas.AcessoDados.Entity.Context;
 using HouseDJ.Musicas.Dominio;
+using HouseDJ.Musicas.Repositorios.Entity;
 using HouseDJ.Musicas.Web.ViewMoldes.Album;
+using HouseDJ.Repositorios.Comum;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
@@ -12,12 +12,13 @@ namespace HouseDJ.Musicas.Web.Controllers
 {
     public class AlbunsController : Controller
     {
-        private MusicasDbContext db = new MusicasDbContext();
+        private IRepositorioGenerico<Album, int> repositorioAlbuns 
+            = new AlbunsRepositorio(new MusicasDbContext());
 
         // GET: Albuns
         public ActionResult Index()
         {
-            return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(db.Albuns.ToList()));
+            return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar()));
         }
 
         // GET: Albuns/Details/5
@@ -27,7 +28,7 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albuns.Find(id);
+            Album album = repositorioAlbuns.SelecionarPorId(id.Value);
             if (album == null)
             {
                 return HttpNotFound();
@@ -51,8 +52,7 @@ namespace HouseDJ.Musicas.Web.Controllers
             if (ModelState.IsValid)
             {
                 Album album = Mapper.Map<AlbumViewModel, Album>(viewModel);
-                db.Albuns.Add(album);
-                db.SaveChanges();
+                repositorioAlbuns.Inserir(album);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +66,7 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albuns.Find(id);
+            Album album = repositorioAlbuns.SelecionarPorId(id.Value);
             if (album == null)
             {
                 return HttpNotFound();
@@ -84,8 +84,7 @@ namespace HouseDJ.Musicas.Web.Controllers
             if (ModelState.IsValid)
             {
                 Album album = Mapper.Map<AlbumViewModel, Album>(viewModel);
-                db.Entry(album).State = EntityState.Modified;
-                db.SaveChanges();
+                repositorioAlbuns.Alterar(album);
                 return RedirectToAction("Index");
             }
             return View(viewModel);
@@ -98,7 +97,7 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albuns.Find(id);
+            Album album = repositorioAlbuns.SelecionarPorId(id.Value);
             if (album == null)
             {
                 return HttpNotFound();
@@ -111,19 +110,9 @@ namespace HouseDJ.Musicas.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Album album = db.Albuns.Find(id);
-            db.Albuns.Remove(album);
-            db.SaveChanges();
+            repositorioAlbuns.ExcluirPorId(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

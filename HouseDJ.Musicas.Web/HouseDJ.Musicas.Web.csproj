@@ -220,6 +220,18 @@
       <Project>{589f3ea5-7011-4fd6-af2c-274e1bbfb1f5}</Project>
       <Name>HouseDJ.Musicas.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HouseDJ.Musicas.Repositorios.Entity\HouseDJ.Musicas.Repositorios.Entity.csproj">
+      <Project>{4fbac976-3574-4dd6-ae0e-f46d052de204}</Project>
+      <Name>HouseDJ.Musicas.Repositorios.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseDJ.Repositorios.Comum.Entity\HouseDJ.Repositorios.Comum.Entity.csproj">
+      <Project>{43912d2b-666a-4976-b7a2-37f2874df139}</Project>
+      <Name>HouseDJ.Repositorios.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseDJ.Repositorios.Comum\HouseDJ.Repositorios.Comum.csproj">
+      <Project>{4806a87f-a0ae-4071-b8c5-81ee2f2f4919}</Project>
+      <Name>HouseDJ.Repositorios.Comum</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
