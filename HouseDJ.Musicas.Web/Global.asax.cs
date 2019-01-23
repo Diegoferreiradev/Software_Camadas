@@ -14,6 +14,7 @@ namespace HouseDJ.Musicas.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.Configurar();
+
         }
     }
 }

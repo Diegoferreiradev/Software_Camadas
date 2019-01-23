@@ -2,7 +2,7 @@
 
 namespace HouseDJ.Musicas.Web.ViewMoldes.Album
 {
-    public class AlbumIndexViewModel
+    public class AlbumExibicaoViewModel
     {
         public int Id { get; set; }
 
