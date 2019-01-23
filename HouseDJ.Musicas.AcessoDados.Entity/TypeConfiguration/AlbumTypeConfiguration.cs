@@ -34,12 +34,14 @@ namespace HouseDJ.Musicas.AcessoDados.Entity.TypeConfiguration
 
         protected override void ConfigurarChaveEstrangeira()
         {
-            HasKey(pk => pk.Id);
+            //HasMany(p => p.Musicas)
+            //    .WithRequired(p => p.Album)
+            //    .HasForeignKey(fk => fk.IdAlbum);
         }
 
         protected override void ConfigurarChavePrimaria()
         {
-            
+            HasKey(pk => pk.Id);
         }
 
         protected override void ConfigurarNomeTabela()

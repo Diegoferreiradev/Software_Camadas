@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace HouseDJ.Musicas.Dominio
 {
@@ -13,5 +9,7 @@ namespace HouseDJ.Musicas.Dominio
         public int Ano { get; set; }
         public string Observacoes { get; set; }
         public string Email { get; set; }
+
+        public virtual List<Musica> Musicas { get; set; }
     }
 }

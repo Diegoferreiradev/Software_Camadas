@@ -1,0 +1,28 @@
+﻿using HouseDJ.Musicas.AcessoDados.Entity.Context;
+using HouseDJ.Musicas.Dominio;
+using HouseDJ.Repositorios.Comum.Entity;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+
+namespace HouseDJ.Musicas.Repositorios.Entity
+{
+    public class MusicasRepositorio : RepositorioGenericoEntity<Musica, long>
+    {
+        public MusicasRepositorio(MusicasDbContext contexto)
+            :base(contexto)
+        {
+
+        }
+
+        public override List<Musica> Selecionar()
+        {
+            return _contexto.Set<Musica>().Include(p => p.Album).ToList();
+        }
+
+        public override Musica SelecionarPorId(long id)
+        {
+            return _contexto.Set<Musica>().Include(p => p.Album).SingleOrDefault(m => m.Id == id);
+        }
+    }
+}
