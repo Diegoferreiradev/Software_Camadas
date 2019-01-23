@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Musicas.AcessoDados
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Comum.Entity", "HouseDJ.Comum.Entity\HouseDJ.Comum.Entity.csproj", "{0D221A2A-61ED-47D7-B734-3A80C500425A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositorios", "Repositorios", "{3108BB05-1BC6-4C3D-A2E2-692ADD368A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDJ.Repositorios.Comum", "HouseDJ.Repositorios.Comum\HouseDJ.Repositorios.Comum.csproj", "{4806A87F-A0AE-4071-B8C5-81EE2F2F4919}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D221A2A-61ED-47D7-B734-3A80C500425A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4806A87F-A0AE-4071-B8C5-81EE2F2F4919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4806A87F-A0AE-4071-B8C5-81EE2F2F4919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4806A87F-A0AE-4071-B8C5-81EE2F2F4919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4806A87F-A0AE-4071-B8C5-81EE2F2F4919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +53,7 @@ Global
 		{589F3EA5-7011-4FD6-AF2C-274E1BBFB1F5} = {96DCFEF3-3E7D-47A9-B8B9-0478A29FB3EA}
 		{51BCC11D-EA27-40A4-84A9-CCF351B704AA} = {91E3A280-6B86-4B9A-88B5-B72750FA6F52}
 		{0D221A2A-61ED-47D7-B734-3A80C500425A} = {91E3A280-6B86-4B9A-88B5-B72750FA6F52}
+		{4806A87F-A0AE-4071-B8C5-81EE2F2F4919} = {3108BB05-1BC6-4C3D-A2E2-692ADD368A74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0775E1E4-A62E-4F08-8A25-40A4F7F1D124}
