@@ -7,6 +7,7 @@ using HouseDJ.Repositorios.Comum;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace HouseDJ.Musicas.Web.Controllers
 {
@@ -19,6 +20,13 @@ namespace HouseDJ.Musicas.Web.Controllers
         public ActionResult Index()
         {
             return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar()));
+        }
+
+        public ActionResult FiltrarPorNome(string pesquisa)
+        {
+            List<Album> albums = repositorioAlbuns.Selecionar().Where(a => a.Nome.Contains(pesquisa)).ToList();
+            List<AlbumExibicaoViewModel> viewModels = Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(albums);
+            return Json(viewModels, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Albuns/Details/5
