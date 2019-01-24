@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
-
-namespace HouseDJ.Musicas.Web.ViewMoldes.Musica
+namespace HouseDJ.Musicas.Web.ViewModels.Musica
 {
     public class MusicaExibicaoViewModel
     {
@@ -16,6 +15,5 @@ namespace HouseDJ.Musicas.Web.ViewMoldes.Musica
 
         [Display(Name = "Nome do Álbum")]
         public string NomeAlbum { get; set; }
-
     }
 }

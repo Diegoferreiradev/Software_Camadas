@@ -40,7 +40,7 @@ namespace HouseDJ.Musicas.Web.Controllers
         // GET: Musicas/Create
         public ActionResult Create()
         {
-            ViewBag.IdAlbum = new SelectList(db.Albums, "Id", "Nome");
+            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace HouseDJ.Musicas.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdAlbum = new SelectList(db.Albums, "Id", "Nome", musica.IdAlbum);
+            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome", musica.IdAlbum);
             return View(musica);
         }
 
@@ -74,7 +74,7 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdAlbum = new SelectList(db.Albums, "Id", "Nome", musica.IdAlbum);
+            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome", musica.IdAlbum);
             return View(musica);
         }
 
@@ -91,7 +91,7 @@ namespace HouseDJ.Musicas.Web.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdAlbum = new SelectList(db.Albums, "Id", "Nome", musica.IdAlbum);
+            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome", musica.IdAlbum);
             return View(musica);
         }
 

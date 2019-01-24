@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using HouseDJ.Musicas.Dominio;
-using HouseDJ.Musicas.Web.ViewMoldes.Album;
-using HouseDJ.Musicas.Web.ViewMoldes.Musica;
+using HouseDJ.Musicas.Web.ViewModels.Album;
+using HouseDJ.Musicas.Web.ViewModels.Musica;
+
 
 namespace HouseDJ.Musicas.Web.AutoMapper
 {

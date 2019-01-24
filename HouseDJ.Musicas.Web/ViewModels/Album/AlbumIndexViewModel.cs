@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HouseDJ.Musicas.Web.ViewMoldes.Album
+namespace HouseDJ.Musicas.Web.ViewModels.Album
 {
     public class AlbumExibicaoViewModel
     {

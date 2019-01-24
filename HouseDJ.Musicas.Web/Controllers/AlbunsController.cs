@@ -2,7 +2,7 @@
 using HouseDJ.Musicas.AcessoDados.Entity.Context;
 using HouseDJ.Musicas.Dominio;
 using HouseDJ.Musicas.Repositorios.Entity;
-using HouseDJ.Musicas.Web.ViewMoldes.Album;
+using HouseDJ.Musicas.Web.ViewModels.Album;
 using HouseDJ.Repositorios.Comum;
 using System.Collections.Generic;
 using System.Net;
