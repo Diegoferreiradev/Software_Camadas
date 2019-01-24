@@ -13,6 +13,13 @@ namespace HouseDJ.Musicas.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Personalizando Rotas
+            routes.MapRoute(
+                name: "PesquisaAlbuns",
+                url: "Albuns/PesquisaPorNome/{pesquisa}",
+                defaults: new {controller = "Albuns", action = "FiltrarPorNome", pesquisa = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
