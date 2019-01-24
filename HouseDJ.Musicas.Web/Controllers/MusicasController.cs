@@ -6,20 +6,27 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using HouseDJ.Musicas.AcessoDados.Entity.Context;
 using HouseDJ.Musicas.Dominio;
+using HouseDJ.Musicas.Repositorios.Entity;
+using HouseDJ.Musicas.Web.ViewModels.Album;
+using HouseDJ.Musicas.Web.ViewModels.Musica;
+using HouseDJ.Repositorios.Comum;
 
 namespace HouseDJ.Musicas.Web.Controllers
 {
     public class MusicasController : Controller
     {
-        private MusicasDbContext db = new MusicasDbContext();
+        private IRepositorioGenerico<Musica, long> repositorioMusicas
+            = new MusicasRepositorio(new MusicasDbContext());
+        private IRepositorioGenerico<Album, int> repositorioAlbuns
+            = new AlbunsRepositorio(new MusicasDbContext());
 
         // GET: Musicas
         public ActionResult Index()
-        {
-            var musicas = db.Musicas.Include(m => m.Album);
-            return View(musicas.ToList());
+        {     
+            return View(Mapper.Map<List<Musica>, List<MusicaExibicaoViewModel>>(repositorioMusicas.Selecionar()));
         }
 
         // GET: Musicas/Details/5
@@ -29,18 +36,20 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Musica musica = db.Musicas.Find(id);
+            Musica musica = repositorioMusicas.SelecionarPorId(id.Value);
             if (musica == null)
             {
                 return HttpNotFound();
             }
-            return View(musica);
+            return View(Mapper.Map<Musica, MusicaExibicaoViewModel>(musica));
         }
 
         // GET: Musicas/Create
         public ActionResult Create()
         {
-            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome");
+            List<AlbumExibicaoViewModel> albuns = Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar());
+            SelectList dropDownAlbuns = new SelectList(albuns, "Id", "Nome");
+            ViewBag.DropDownAlbuns = dropDownAlbuns;
             return View();
         }
 
@@ -49,17 +58,16 @@ namespace HouseDJ.Musicas.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,IdAlbum")] Musica musica)
+        public ActionResult Create([Bind(Include = "Id,Nome,IdAlbum")] MusicaViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Musicas.Add(musica);
-                db.SaveChanges();
+                Musica musica = Mapper.Map<MusicaViewModel, Musica>(viewModel);
+                repositorioMusicas.Inserir(musica);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome", musica.IdAlbum);
-            return View(musica);
+            return View(viewModel);
         }
 
         // GET: Musicas/Edit/5
@@ -69,13 +77,15 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Musica musica = db.Musicas.Find(id);
+            Musica musica = repositorioMusicas.SelecionarPorId(id.Value);
             if (musica == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome", musica.IdAlbum);
-            return View(musica);
+            List<AlbumExibicaoViewModel> albuns = Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar());
+            SelectList dropDownAlbuns = new SelectList(albuns, "Id", "Nome");
+            ViewBag.DropDownAlbuns = dropDownAlbuns;
+            return View(Mapper.Map<Musica, MusicaViewModel>(musica));
         }
 
         // POST: Musicas/Edit/5
@@ -83,16 +93,15 @@ namespace HouseDJ.Musicas.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,IdAlbum")] Musica musica)
+        public ActionResult Edit([Bind(Include = "Id,Nome,IdAlbum")] MusicaViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(musica).State = EntityState.Modified;
-                db.SaveChanges();
+                Musica musica = Mapper.Map<MusicaViewModel, Musica>(viewModel);
+                repositorioMusicas.Alterar(musica);
                 return RedirectToAction("Index");
             }
-            ViewBag.IdAlbum = new SelectList(db.Albuns, "Id", "Nome", musica.IdAlbum);
-            return View(musica);
+            return View(viewModel);
         }
 
         // GET: Musicas/Delete/5
@@ -102,12 +111,12 @@ namespace HouseDJ.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Musica musica = db.Musicas.Find(id);
+            Musica musica = repositorioMusicas.SelecionarPorId(id.Value);
             if (musica == null)
             {
                 return HttpNotFound();
             }
-            return View(musica);
+            return View(Mapper.Map<Musica, MusicaExibicaoViewModel>(musica));
         }
 
         // POST: Musicas/Delete/5
@@ -115,19 +124,9 @@ namespace HouseDJ.Musicas.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Musica musica = db.Musicas.Find(id);
-            db.Musicas.Remove(musica);
-            db.SaveChanges();
+            repositorioMusicas.ExcluirPorId(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
