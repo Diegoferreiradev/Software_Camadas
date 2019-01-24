@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using System.Linq;
+using HouseDJ.Musicas.Web.Filtros;
 
 namespace HouseDJ.Musicas.Web.Controllers
 {
