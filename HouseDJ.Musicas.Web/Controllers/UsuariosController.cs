@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace HouseDJ.Musicas.Web.Controllers
 {
+    [AllowAnonymous]
     public class UsuariosController : Controller
     {
         public ActionResult CriarUsuario()
@@ -75,6 +76,14 @@ namespace HouseDJ.Musicas.Web.Controllers
             }
 
             return View(viewModel);
+        }
+
+        [Authorize]
+        public ActionResult Logoff()
+        {
+            var authManager = HttpContext.GetOwinContext().Authentication;
+            authManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

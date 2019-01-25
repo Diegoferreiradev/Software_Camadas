@@ -12,6 +12,7 @@ using HouseDJ.Musicas.Web.Filtros;
 
 namespace HouseDJ.Musicas.Web.Controllers
 {
+    [Authorize]
     public class AlbunsController : Controller
     {
         private IRepositorioGenerico<Album, int> repositorioAlbuns 
@@ -46,6 +47,7 @@ namespace HouseDJ.Musicas.Web.Controllers
         }
 
         // GET: Albuns/Create
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Create()
         {
             return View();
@@ -56,6 +58,7 @@ namespace HouseDJ.Musicas.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMINISTRADOR")]
         public ActionResult Create([Bind(Include = "Id,Nome,Ano,Observacoes,Email")] AlbumViewModel viewModel)
         {
             if (ModelState.IsValid)

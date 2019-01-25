@@ -16,6 +16,7 @@ using HouseDJ.Repositorios.Comum;
 
 namespace HouseDJ.Musicas.Web.Controllers
 {
+    [Authorize]
     public class MusicasController : Controller
     {
         private IRepositorioGenerico<Musica, long> repositorioMusicas
