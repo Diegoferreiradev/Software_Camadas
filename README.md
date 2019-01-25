@@ -1,6 +1,6 @@
 # Software_Camadas
 
-Desenvolvimento de uma Aplicação em Asp.Net MVC em várias Camadas Independentes e Reutilizáveis. 
+Aplicação Asp.Net MVC em várias Camadas Independentes e Reutilizáveis, Com autenticação via Asp.Net Identity| Owin. 
 
 App: Music
 
