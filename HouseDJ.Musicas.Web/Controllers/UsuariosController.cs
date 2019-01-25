@@ -44,5 +44,37 @@ namespace HouseDJ.Musicas.Web.Controllers
             }
             return View(viewModel);
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UsuarioViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var useStore = new UserStore<IdentityUser>(new MusicasIdentityDbContext());
+                var userManager = new UserManager<IdentityUser>(useStore);
+                var usuario = userManager.Find(viewModel.Email, viewModel.Senha);
+                if (usuario == null)
+                {
+                    ModelState.AddModelError("erro_identity", "Usuário e/ou Senha inválidos");
+                    return View(viewModel);
+                }
+                var authManager = HttpContext.GetOwinContext().Authentication;
+                var identity = userManager.CreateIdentity(usuario, DefaultAuthenticationTypes.ApplicationCookie);
+                authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties
+                {
+                    IsPersistent = false
+                }, identity);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(viewModel);
+        }
     }
 }
